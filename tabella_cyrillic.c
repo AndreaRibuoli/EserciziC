@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
    for (int r = 65; r < 69; r++) {
      printf("|%X_", r);  
      for (int c = 0; c < 16; c++) {
-       char cyril[3];
+       char cyril[4];
        sprintf(cyril, "%3.3X", 16 * r + c);  
        converti_api(cyril, risultato);
        printf("|%s", risultato);
