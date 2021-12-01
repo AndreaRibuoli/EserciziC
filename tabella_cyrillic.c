@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
    printf("    "); 
    for (int c = 0; c < 16; c++)  printf("|%X", c); 
    printf("|\n|---");    
-   for (int c = 0; c < 16; c++)  printf("|-", c); 
+   for (int c = 0; c < 16; c++)  printf("|-"); 
    printf("|\n");    
    for (int r = 65; r < 69; r++) {
      printf("|%X_", r);  

@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
    printf("    "); 
    for (int c = 0; c < 16; c++)  printf("|-%X ", c); 
    printf("|\n");    
-   for (int c = 0; c < 17; c++)  printf("|---", c); 
+   for (int c = 0; c < 17; c++)  printf("|---"); 
    printf("|\n");    
    for (int r = 2; r < 8; r++) {
      printf("| %X-", r);  
