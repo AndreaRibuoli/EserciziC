@@ -7,21 +7,23 @@
 */
 
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 #include "converti_api.h"
-
-static union { char c[8]; unsigned long a_long; } test = { { 'l', '?', '?', '?', '?', '?', '?', 'b' } };
+static union { char c[__SIZEOF_LONG__]; unsigned long a_long; } test;
 #define ENDIANNESS ((char) test.a_long)
 
 void inverti(char *s);
 
 int converti_api(char *CP, char *utf8) {
     char *end;
-    char str[9]       = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    char str[__SIZEOF_LONG__ + 1];
     unsigned long *b  = (unsigned long *)(str);
     unsigned long i;
-    
+    test.c[0] = 'l';
+    test.c[__SIZEOF_LONG__ - 1] = 'b';
+    memset(str, '\0', sizeof(str));
     i = strtol(CP, &end, 16);
     if (i <= 127) {
       *b = i;  
@@ -53,8 +55,9 @@ int converti_api(char *CP, char *utf8) {
 
 void inverti(char *s) {
   char p;
-  p = s[0]; s[0] = s[7]; s[7] = p;  
-  p = s[1]; s[1] = s[6]; s[6] = p;  
-  p = s[2]; s[2] = s[5]; s[5] = p;  
-  p = s[3]; s[3] = s[4]; s[4] = p;      
+  for (int j=0; j< (sizeof(long) / 2); j++) {
+    p = s[j];
+    s[j] = s[sizeof(long)-1-j];
+    s[sizeof(long)-1-j] = p;
+  }
 }
