@@ -27,28 +27,20 @@ int converti_api(char *CP, char *utf8) {
     i = strtol(CP, &end, 16);
     if (i <= 127) {
       *b = i;  
-      if (sizeof(long)==8) {
-        if (ENDIANNESS == 'l') inverti(str);  
-        sprintf(utf8, "%s", &(str[sizeof(long)-1]));
-      }   
+      if (ENDIANNESS == 'l') inverti(str);
+      sprintf(utf8, "%s", &(str[sizeof(long)-1]));
     } else if (i <= 2047) {
       *b = (((i & 0x07C0) << 2) | (i & 0x003F)) | 0xC080;  
-      if (sizeof(long)==8) {
-        if (ENDIANNESS == 'l') inverti(str);  
-        sprintf(utf8, "%s", &(str[sizeof(long)-2]));
-      } 
+      if (ENDIANNESS == 'l') inverti(str);
+      sprintf(utf8, "%s", &(str[sizeof(long)-2]));
     } else if (i <= 65535) {
       *b = (((i & 0xF000) << 4) | ((i & 0x0FC0) << 2) | (i & 0x003F)) | 0xE08080;  
-      if (sizeof(long)==8) {
-        if (ENDIANNESS == 'l') inverti(str);  
-        sprintf(utf8, "%s", &(str[sizeof(long)-3]));
-      }   
+      if (ENDIANNESS == 'l') inverti(str);
+      sprintf(utf8, "%s", &(str[sizeof(long)-3]));
     } else {
       *b = (((i & 0x03F000) << 4) | ((i & 0x0FC0) << 2) | (i & 0x003F)) | 0xF0808080;  
-      if (sizeof(long)==8) {
-        if (ENDIANNESS == 'l') inverti(str);  
-        sprintf(utf8, "%s", &(str[sizeof(long)-4]));
-      } 
+      if (ENDIANNESS == 'l') inverti(str);
+      sprintf(utf8, "%s", &(str[sizeof(long)-4]));
     }
     return 0; 
 }
