@@ -1,0 +1,9 @@
+123456789012345678901234567890
+Ho scritto un articolo per un giornale. 
+Ho usato il formato solo testo. 
+L'articolo è stato accettato! 
+Per stamparlo mi viene però richiesto di ri-organizzarlo in righe di non più di 30 caratteri affinchè possa essere inserito come colonna in una pagina della prossima uscita del giornale.
+Scrivi un programma che accetti due parametri:
+il nome del file contenente l'articolo originale
+il numero massimo di caratteri per riga
+Il programma deve emettere sullo standard output le righe riorganizzate secondo quanto richiesto e restituire, come valore di ritorno, il numero totale delle stesse.
