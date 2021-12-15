@@ -38,7 +38,7 @@ class Email : public Azione {
         setName(n); 
     }
     string dettagli() { 
-        string risultato = destinatario + "(" + destinatario + ")";
+        string risultato = messaggio + "(" + destinatario + ")";
         return risultato; }  
 };
 
